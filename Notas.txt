@@ -1,0 +1,30 @@
+La presente prueba está orientada a validar sus conocimientos en C# .Net y Oracle PL/SQL. Por favor siga las siguientes instrucciones:
+Utilice el script adjunto para crear los objetos correspondientes al modelo que encontrará en el enunciado.
+Desarrolle las actividades propuestas en el enunciado.
+Adjunte como respuesta al presente correo: los scripts de bases de datos y el comprimido de la aplicación implementada.
+Adicione las instrucciones que considere necesarias.
+Agradezco su participación en nuestro proceso de selección.
+
+
+
+
+Dado el número de identificación del CLIENTE se genera una FACTURA para el cliente, la cual incluye el cobro de todos los MANTENIMIENTOS es estado “terminado”. 
+La FACTURA debe contener todos los datos del 
+      cliente (primer nombre, segundo nombre, primer apellido, segundo apellido, , tipo de documento, documento, celular, dirección y correo electrónico), 
+	  los datos del mecánico que hizo el 
+mantenimiento (primer nombre, segundo nombre, primer apellido, segundo apellido, , tipo de documento, documento, celular, dirección y correo electrónico, estado), 
+
+el desglose de los repuestos utilizados (precio por unidad, número de unidades, descuento), 
+el desglose de servicios (precio de la mano de obra, descuento), y el total de la factura. 
+
+A este total se le aplica el 19 % de IVA. 
+
+En la facturación se debe tener en cuenta:
+-	Se aplica un descuento del 50% sobre los servicios de mano de obra cuando el valor total de los repuestos sea superior a $3.000.000.
+-	El valor de mano de obra de cada uno de los tipos de servicio tiene un valor mínimo y máximo definido. 
+-	No se debe emitir facturas que superen el presupuesto que estableció el CLIENTE (en caso de que él haya establecido ese límite). 
+
+
+
+1070616978
+http://localhost:2498/Home/Facturar?cedula=1070616978

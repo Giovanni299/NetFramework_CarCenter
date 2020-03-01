@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Facturar";
+}
+
+@model CarCenter.Models.Factura
+
+<head>
+    <style>
+        table, th, td, tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<style type="text/css">
+    .price {
+        text-align: left;
+        font-weight: bold;
+        color: darkblue;
+    }
+</style>
+
+<h1>SISTEMA DE FACTURACIÓN</h1>
+<h3>Cliente</h3>
+<table class="table-bordered">
+    <tbody>
+        <tr> <th>Nombres: </th> <td>@Model.clNombre @Model.clApellido</td> <th>Documento: </th> <td>@Model.clTipoDoc @Model.clDocumento</td></tr>
+        <tr> <th>Dirección: </th> <td>@Model.clDireccion</td> <th>Celular: </th> <td>@Model.clCelular</td> <th>Email: </th> <td>@Model.clEmail</td></tr>
+    </tbody>
+</table>
+
+<h3>Mantenimientos</h3>
+@foreach (var mtto in Model.mantenimientos)
+{
+    <h4>* Fecha: @mtto.fechaMtto.Date</h4>
+    <table class="table-bordered">
+        <tbody>
+            <tr> <th>Mecánico: </th> <td>@mtto.mcNombre @mtto.mcApellido</td> <th>Documento: </th> <td>@mtto.mcTipoDoc @mtto.mcDocumento</td></tr>
+            <tr> <th>Dirección: </th> <td>@mtto.mcDireccion</td> <th>Celular: </th> <td>@mtto.mcCelular</td> <th>Email: </th> <td>@mtto.mcEmail</td></tr>
+        </tbody>
+    </table>
+    <br />
+
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre del servicio</th>
+                <th>Precio unitario</th>
+                <th>Unidades</th>
+                <th>Precio Normal</th>
+                <th>Precio con descuento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ser in mtto.servicios)
+            {
+                <tr>
+                    <td>@ser.nombreServicio</td>
+                    <td>@ser.precio</td>
+                    <td>1</td>
+                    <td></td>
+                    <td>@ser.precioDesc</td>
+                </tr>
+            }
+        </tbody>
+
+        <thead>
+            <tr>
+                <th>Nombre del repuesto</th>
+                <th>Precio unitario</th>
+                <th>Unidades</th>
+                <th>Precio Normal</th>
+                <th>Precio con descuento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rep in mtto.repuestos)
+            {
+                <tr>
+                    <td>@rep.nombreRepuesto</td>
+                    <td> @rep.precio</td>
+                    <td>@rep.unidades</td>
+                    <td>@rep.totalRep</td>
+                    <td>@rep.totalRepDesc</td>
+                </tr>
+            }
+        </tbody>
+
+        <tbody>
+            <tr>
+                <th class="price" colspan="4">Valor total del mantenimiento:</th>
+                <th class="price">@mtto.totalMtto</th>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+}
+
+<h3>Total Factura</h3>
+<table class="table-bordered">
+    <tbody>
+        <tr> <th>Total mantenimientos:</th> <td>@Model.total</td></tr>
+        <tr> <th>IVA (19%)</th> <td>@Model.iva</td></tr>
+        <tr> <th>TOTAL A COBRAR: </th> <th>@Model.totalCobro</th></tr>
+    </tbody>
+</table>
